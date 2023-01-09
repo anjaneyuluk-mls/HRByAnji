@@ -1,20 +1,44 @@
-import { Button, Form, Input, Spin } from 'antd';
+import { Button, Form, Input, Spin, Row, Col, Space, Image, Typography } from 'antd';
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { UserContext } from '../contexts/UserContext';
-
-const Container = styled.div`
-  margin: 24px;
-  height: 500px;
-  width: 400px;
-  padding: 24px;
-  border: 1px solid gray;
-  border-radius: 10px;
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+const FormContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+`;
+const Container = styled.div`
+  height: 100vh;
+  width: 100vw;
+  padding: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-image: url('./assets/login-background.svg');
+  & .login-container {
+    .link {
+      line-height: 24px;
+      color: rgba(3, 63, 135, 1);
+      cursor: pointer;
+    }
+    & .login-left {
+      padding: 48px;
+      background: rgba(233, 242, 253, 0.83);
+    }
+    & .login-right {
+      padding: 48px;
+      background: white;
+      & .login-form {
+        & .ant-form-item {
+          width: 280px;
+        }
+      }
+    }
+  }
 `;
 const FormItem = Form.Item;
 export const Login = () => {
@@ -47,23 +71,61 @@ export const Login = () => {
   };
   return (
     <Container>
-      {loading ? (
-        <Spin spinning={loading} />
-      ) : (
-        <Form onFinish={login} name="login-form">
-          <FormItem name="username" label="User Name">
-            <Input />
-          </FormItem>
-          <FormItem name="password" label="Password">
-            <Input type="password" />
-          </FormItem>
-          <FormItem>
-            <Button type="primary" htmlType="submit">
-              Login
-            </Button>
-          </FormItem>
-        </Form>
-      )}
+      <Row className="login-container" fluid={true}>
+        <Col className="login-left" span={12}>
+          <Row style={{ height: '100%' }} justify={'center'} align="middle">
+            <Space size={12} direction="vertical">
+              <Image width={280} preview={false} src="./assets/login-codex-logo.svg"></Image>
+              <Image width={320} preview={false} src="./assets/login-persons.svg"></Image>
+            </Space>
+          </Row>
+        </Col>
+        <Col className="login-right" span={12}>
+          <Row fluid={true} style={{ height: '100%' }} justify={'center'} align={'middle'}>
+            <Space size={36} direction="vertical">
+              <Image preview={false} src="./assets/login-logo-top.svg"></Image>
+              <Typography.Title level={3}>Login</Typography.Title>
+              <FormContainer>
+                {loading ? (
+                  <Spin spinning={loading} />
+                ) : (
+                  <Form style={{ minWidth: 300 }} onFinish={login} name="login-form">
+                    <FormItem name="username">
+                      <Input
+                        prefix={<UserOutlined className="site-form-item-icon" />}
+                        placeholder="Username"
+                      />
+                    </FormItem>
+                    <FormItem name="password">
+                      <Input
+                        prefix={<LockOutlined className="site-form-item-icon" />}
+                        type="password"
+                        placeholder="Password"
+                      />
+                    </FormItem>
+                    <FormItem>
+                      <Row justify={'center'}>
+                        <Button style={{ width: 180 }} type="primary" htmlType="submit">
+                          Login
+                        </Button>
+                      </Row>
+                    </FormItem>
+                  </Form>
+                )}
+                {/* <Space> */}
+                <span>
+                  <span className="link">Forgot password?</span> <br />
+                </span>
+                <span>
+                  <span> or </span>
+                  <span className="link">Signup</span>
+                </span>
+                {/* </Space> */}
+              </FormContainer>
+            </Space>
+          </Row>
+        </Col>
+      </Row>
     </Container>
   );
 };
