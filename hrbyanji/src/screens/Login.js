@@ -71,7 +71,7 @@ export const Login = () => {
   };
   return (
     <Container>
-      <Row className="login-container" fluid={true}>
+      <Row className="login-container" fluid={'true'}>
         <Col className="login-left" span={12}>
           <Row style={{ height: '100%' }} justify={'center'} align="middle">
             <Space size={12} direction="vertical">
@@ -81,7 +81,7 @@ export const Login = () => {
           </Row>
         </Col>
         <Col className="login-right" span={12}>
-          <Row fluid={true} style={{ height: '100%' }} justify={'center'} align={'middle'}>
+          <Row fluid={'true'} style={{ height: '100%' }} justify={'center'} align={'middle'}>
             <Space size={36} direction="vertical">
               <Image preview={false} src="./assets/login-logo-top.svg"></Image>
               <Typography.Title level={3}>Login</Typography.Title>
