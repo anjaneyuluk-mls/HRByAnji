@@ -4,6 +4,7 @@ import { Admin } from './screens/Admin';
 import { Finance } from './screens/Finance';
 import Home from './screens/Home';
 import { HR } from './screens/HR';
+import { EmployeeHiring } from './screens/HR/Hiring';
 import { IT } from './screens/IT';
 import { Login } from './screens/Login';
 import { Sales } from './screens/Sales';
@@ -30,6 +31,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute condition={() => localStorage.getItem('token')}>
             <HR />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'employeehiring',
+        element: (
+          <ProtectedRoute condition={() => localStorage.getItem('token')}>
+            <EmployeeHiring />
           </ProtectedRoute>
         ),
       },

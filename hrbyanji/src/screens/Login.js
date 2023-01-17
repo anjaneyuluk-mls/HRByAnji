@@ -13,7 +13,6 @@ const FormContainer = styled.div`
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
-  padding: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,7 +71,7 @@ export const Login = () => {
   return (
     <Container>
       <Row className="login-container" fluid={'true'}>
-        <Col className="login-left" span={12}>
+        <Col className="login-left" span={13}>
           <Row style={{ height: '100%' }} justify={'center'} align="middle">
             <Space size={12} direction="vertical">
               <Image width={280} preview={false} src="./assets/login-codex-logo.svg"></Image>
@@ -80,7 +79,7 @@ export const Login = () => {
             </Space>
           </Row>
         </Col>
-        <Col className="login-right" span={12}>
+        <Col className="login-right" span={11}>
           <Row fluid={'true'} style={{ height: '100%' }} justify={'center'} align={'middle'}>
             <Space size={36} direction="vertical">
               <Image preview={false} src="./assets/login-logo-top.svg"></Image>

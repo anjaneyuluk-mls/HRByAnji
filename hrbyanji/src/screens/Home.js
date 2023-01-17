@@ -53,7 +53,12 @@ const Home = () => {
             defaultOpenKeys={['sub1']}
             style={{ height: '100%', borderRight: 0 }}
             items={[
-              { key: 'hr', label: 'HR', icon: <TeamOutlined /> },
+              { key: 'hr', label: 'HR', icon: <TeamOutlined />, children: [
+                  {
+                      key: 'employeehiring',
+                      label:'Employee Hiring'
+                  }
+              ] },
               { key: 'admin', label: 'Admin', icon: <LockOutlined /> },
               { key: 'finance', label: 'Finance', icon: <BookOutlined /> },
               { key: 'it', label: 'IT', icon: <LaptopOutlined /> },
