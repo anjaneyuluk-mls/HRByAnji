@@ -57,6 +57,10 @@ const Home = () => {
                   {
                       key: 'employeehiring',
                       label:'Employee Hiring'
+                  },
+                    {
+                      key: 'onboarding',
+                      label:'Employee Onboarding'
                   }
               ] },
               { key: 'admin', label: 'Admin', icon: <LockOutlined /> },

@@ -4,10 +4,15 @@ import { Admin } from './screens/Admin';
 import { Finance } from './screens/Finance';
 import Home from './screens/Home';
 import { HR } from './screens/HR';
-import { EmployeeHiring } from './screens/HR/Hiring';
+import { EmployeeHiring } from './screens/HR/Hiring/Hiring';
+import { BasicDetails } from './screens/HR/Hiring/BasicDetails';
+import { FinalRound } from './screens/HR/Hiring/FinalRound';
+import { L1Form } from './screens/HR/Hiring/L1Form';
+import { L2Form } from './screens/HR/Hiring/L2Form';
 import { IT } from './screens/IT';
 import { Login } from './screens/Login';
 import { Sales } from './screens/Sales';
+import { Onboarding } from './screens/HR/Onboarding/Onboarding';
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +44,48 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute condition={() => localStorage.getItem('token')}>
             <EmployeeHiring />
+          </ProtectedRoute>
+        ),
+        children: [
+          {
+            index: true,
+            element: (
+              <ProtectedRoute condition={() => localStorage.getItem('token')}>
+                <BasicDetails />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: 'l1',
+            element: (
+              <ProtectedRoute condition={() => localStorage.getItem('token')}>
+                <L1Form />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: 'l2',
+            element: (
+              <ProtectedRoute condition={() => localStorage.getItem('token')}>
+                <L2Form />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: 'final',
+            element: (
+              <ProtectedRoute condition={() => localStorage.getItem('token')}>
+                <FinalRound />
+              </ProtectedRoute>
+            ),
+          },
+        ],
+      },
+      {
+        path: 'onboarding',
+        element: (
+          <ProtectedRoute condition={() => localStorage.getItem('token')}>
+            <Onboarding />
           </ProtectedRoute>
         ),
       },
